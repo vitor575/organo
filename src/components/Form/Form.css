@@ -1,0 +1,18 @@
+.Form {
+    display: flex;
+    justify-content: center;
+    margin: 80px 0;
+}
+
+.Form h2 {
+    font-size: 30px;
+}
+
+.Form form {
+    width: 70vw;
+    background-color: #F2F2F2;
+    border-radius: 20px;
+    padding: 36px 64px;
+    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.3);
+}
+

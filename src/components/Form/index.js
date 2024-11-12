@@ -5,16 +5,21 @@ import Button from "../Button";
 import { useState } from "react";
 
 
-const Form = (props) => {
+const Form = ({newColaborator, times, }) => {
 
     const onSave = (event) => {
         event.preventDefault();
-        props.newColaborator({
+        newColaborator({
             nome,
             cargo,
-            time,
-            imagem
+            imagem,
+            time
         });
+
+        setNome('');
+        setCargo('');
+        setImagem('');
+        setTime('');
     }
 
     const [nome, setNome] = useState('');
@@ -22,18 +27,21 @@ const Form = (props) => {
     const [imagem, setImagem] = useState('');
     const [time, setTime] = useState('');
 
+    
+    
+
     return (
         <section className="Form">
             <form onSubmit={onSave}>
                 <h2>Preencha os dados para criar o card do colaborador.</h2>
                 <TextField 
-                    obrigatorio="true" 
+                    obrigatorio={true} 
                     label="Nome" 
                     placeholder="Digite o seu nome" 
                     valor={nome}
                     aoAlterado={valor => setNome(valor)}
                     />
-                <TextField obrigatorio="true"
+                <TextField obrigatorio={true}
                      label="Cargo" 
                      placeholder="Digite o seu cargo" 
                      valor={cargo}
@@ -45,7 +53,7 @@ const Form = (props) => {
                     aoAlterado={valor => setImagem(valor)}/>
                 <List 
                 label="Times"
-                itens={props.times} 
+                itens={times} 
                 valor={time}
                 aoAlterado={valor => setTime(valor)}/>
                 <Button>

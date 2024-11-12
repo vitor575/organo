@@ -6,59 +6,71 @@ import { useState } from "react";
 
 function App(props) {
 
-  const times = [
-  {
-    nome: "Programação",
-    corPrimaria: "#57C278",
-    corSecundaria: "#D9F7D9"
-  },
-  {
-    nome: "Front-end",
-    corPrimaria: "#82CFFA",
-    corSecundaria: "#E8F8FF"
-  },
-  {
-    nome: "Data Science",
-    corPrimaria: "#A6D157",
-    corSecundaria: "#F0F8E2"
-  },
-  {
-    nome: "Devops",
-    corPrimaria: "#E06869",
-    corSecundaria: "#FDE7E8"
-  },
-  {
-    nome: "UX e Design",
-    corPrimaria: "#DB6EBF",
-    corSecundaria: "#FAE9F5"
-  },
-  {
-    nome: "Mobile",
-    corPrimaria: "#FFBA05",
-    corSecundaria: "#FFF5D9"
-  },
-  {
-    nome: "inovação e Gestão",
-    corPrimaria: "#FF8A29",
-    corSecundaria: "#FFEEDF"
-  },
-]
+  const [times, setTimes] = useState([
+    {
+      nome: "Programação",
+      cor: "#57C278",
+    },
+    {
+      nome: "Front-end",
+      cor: "#82CFFA"
+    },
+    {
+      nome: "Data Science",
+      cor: "#A6D157"
+    },
+    {
+      nome: "Devops",
+      cor: "#E06869"
+    },
+    {
+      nome: "UX e Design",
+      cor: "#DB6EBF"
+    },
+    {
+      nome: "Mobile",
+      cor: "#FFBA05"
+    },
+    {
+      nome: "inovação e Gestão",
+      cor: "#FF8A29"  
+    },
+  ]);
 
   const [colaborators, setColaborators] = useState([]);
 
-  const showColaborator = (colaborator) => {
-    setColaborators([...colaborators, colaborator])
+  const createColaborator = (colaborator) => {
+    setColaborators([...colaborators, colaborator]);
   };
+
+  const deletarColaborador = () => {
+    console.log("deletando");
+  }
+
+  const mudarCorDoTime = (cor, nome) => {
+    setTimes(times.map(time => {
+      if(time.nome === nome){
+        time.cor = cor;
+      }
+      return time;
+    }))
+  }
 
   return (
     <div className="App">
       <header>
-        <Banner/>
+        <Banner />
       </header>
-      <Form times={times.map(time => time.nome)} newColaborator= {colaborator => showColaborator(colaborator)}/>
+      <Form times={times.map(time => time.nome)} newColaborator={colaborator => createColaborator(colaborator)} />
 
 
-    {times.map(time => <Time key={time.nome} nome={time.nome} corPrimaria={time.corPrimaria} corSecundaria={time.corSecundaria}/>)}
+      {times.map(time => <Time
+        mudarCor={mudarCorDoTime}
+        aoDeletar={deletarColaborador}
+        key={time.nome}
+        nome={time.nome}
+        cor={time.cor}
+        colaborators={colaborators.filter(colaborador => colaborador.time === time.nome)} />)}
 
 
     </div>

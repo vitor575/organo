@@ -1,6 +1,12 @@
+import { ReactElement } from 'react';
 import './Button.css';
+import React from 'react';
 
-const Button = (props) => {
+interface BotaoProps {
+    children: ReactElement
+};
+
+const Button = (props: BotaoProps) => {
     return (
         <div className="Button">
             <button >{props.children}</button>

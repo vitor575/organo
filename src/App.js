@@ -59,7 +59,7 @@ function App(props) {
   return (
     <div className="App">
       <header>
-        <Banner />
+        <Banner enderecoImagem='./imagens/banner.png'/>
       </header>
       <Form times={times.map(time => time.nome)} newColaborator={colaborator => createColaborator(colaborator)} />
 

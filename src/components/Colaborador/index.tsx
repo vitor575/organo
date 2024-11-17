@@ -1,7 +1,15 @@
 import './Colaborador.css';
 import { TiDelete } from "react-icons/ti";
 
-const Colaborador = ({nome, imagem, cargo, corDeFundo, aoDeletar}) => {
+interface colaboradorProps {
+    nome:string
+    imagem:string
+    cargo:string
+    corDeFundo:string
+    aoDeletar: () => void
+}
+
+const Colaborador = ({nome, imagem, cargo, corDeFundo, aoDeletar}:colaboradorProps) => {
     return (
         <div className="colaborador">
             <TiDelete size={20} className='deletar' onClick={aoDeletar}/>

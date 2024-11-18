@@ -2,9 +2,10 @@ import Banner from "./components/Banner";
 import Form from "./components/Form";
 import Time from "./components/Time";
 import { useState } from "react";
+import { IColaborator } from "./shared/interface/IColaborator";
 
 
-function App(props) {
+function App() {
 
   const [times, setTimes] = useState([
     {
@@ -37,9 +38,9 @@ function App(props) {
     },
   ]);
 
-  const [colaborators, setColaborators] = useState([]);
+  const [colaborators, setColaborators] = useState<IColaborator[]>([]);
 
-  const createColaborator = (colaborator) => {
+  const createColaborator = (colaborator: IColaborator) => {
     setColaborators([...colaborators, colaborator]);
   };
 
@@ -47,7 +48,7 @@ function App(props) {
     console.log("deletando");
   }
 
-  const mudarCorDoTime = (cor, nome) => {
+  const mudarCorDoTime = (cor:string, nome:string) => {
     setTimes(times.map(time => {
       if(time.nome === nome){
         time.cor = cor;

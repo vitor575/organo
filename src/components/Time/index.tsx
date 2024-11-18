@@ -28,7 +28,7 @@ const Time = ({colaborators, nome, cor, aoDeletar, mudarCor}:timeProps) => {
                 imagem={colaborator.imagem}/>)}
             </div>
         </section>
-        : ''
+        : <></>
     )
 };
 

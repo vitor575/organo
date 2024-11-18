@@ -4,10 +4,10 @@ interface textFieldProps {
     aoAlterado: (valor: string) => void
     placeholder: string
     label:string
-    obrigatorio:boolean
+    obrigatorio?:boolean
 }
 
-const TextField = ({aoAlterado, label, obrigatorio, placeholder}:textFieldProps) => {
+const TextField = ({aoAlterado, label, placeholder, obrigatorio = false}:textFieldProps) => {
 
     const aoDigitar = (e:React.ChangeEvent<HTMLInputElement>) => {
         aoAlterado(e.target.value);

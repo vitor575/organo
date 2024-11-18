@@ -3,11 +3,17 @@ import TextField from "../TextField";
 import List from "../List";
 import Button from "../Button";
 import { useState } from "react";
+import { IColaborator } from "../../shared/interface/IColaborator";
+
+interface formProps {
+    newColaborator:(colaborator:IColaborator) => void
+    times:string[]
+}
 
 
-const Form = ({newColaborator, times, }) => {
+const Form = ({newColaborator, times }:formProps) => {
 
-    const onSave = (event) => {
+    const onSave = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         newColaborator({
             nome,
@@ -38,23 +44,21 @@ const Form = ({newColaborator, times, }) => {
                     obrigatorio={true} 
                     label="Nome" 
                     placeholder="Digite o seu nome" 
-                    valor={nome}
                     aoAlterado={valor => setNome(valor)}
                     />
                 <TextField obrigatorio={true}
                      label="Cargo" 
                      placeholder="Digite o seu cargo" 
-                     valor={cargo}
                      aoAlterado={valor => setCargo(valor)}/>
                 <TextField 
                     label="Imagem" 
                     placeholder="Digite o endereço da sua imagem"
-                    valor={imagem} 
                     aoAlterado={valor => setImagem(valor)}/>
                 <List 
                 label="Times"
                 itens={times} 
                 valor={time}
+                obrigatorio={true}
                 aoAlterado={valor => setTime(valor)}/>
                 <Button>
                     Criar card
